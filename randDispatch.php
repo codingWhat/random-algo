@@ -44,7 +44,6 @@ function randomDispatchTask($taskSum, $taskRatios){
     }
 
     $maxRange = array_sum($taskRatios);
-
     for($i = 0; $i < $taskSum; $i++) {
         $random = mt_rand(0, $maxRange);
         $bk = "";
@@ -58,8 +57,9 @@ function randomDispatchTask($taskSum, $taskRatios){
         }
         if (!empty($bk)) {
             $res[$bk]++;
+            //todo dispatch the task to downstream..
         }
     }
 
-    var_dump(/*$taskRatios,*/ $res);
+
 }
