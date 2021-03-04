@@ -3,10 +3,11 @@ testCase();
 function testCase() {
     $taskSum = 1000;
     $taskRatios = [
-        "A" => 2,
-        "C" => 1,
+        "A" => 1,
+        "C" => 2,
         "B" => 5,
     ];
+    //比例保证升序
     $startTime = microtime(true);
     randomDispatchTask($taskSum, $taskRatios);
     echo "运行时间:" . round((microtime(true) - $startTime) * 1000,2) . "ms" . PHP_EOL;
@@ -14,8 +15,8 @@ function testCase() {
 
     $taskSum = 10000;
     $taskRatios = [
-        "A" => 2,
-        "C" => 1,
+        "A" => 1,
+        "C" => 2,
         "B" => 5,
     ];
     $startTime = microtime(true);
@@ -45,7 +46,7 @@ function randomDispatchTask($taskSum, $taskRatios){
 
     $maxRange = array_sum($taskRatios);
     for($i = 0; $i < $taskSum; $i++) {
-        $random = mt_rand(0, $maxRange);
+        $random = mt_rand(1, $maxRange);
         $bk = "";
         $weight = 0;
         foreach($taskRatios as $tbk => $ratio) {
@@ -60,6 +61,6 @@ function randomDispatchTask($taskSum, $taskRatios){
             //todo dispatch the task to downstream..
         }
     }
-
+    var_dump($res);
 
 }
